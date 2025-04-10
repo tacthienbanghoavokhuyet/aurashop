@@ -11,7 +11,6 @@
       padding: 20px;
       background: #f7f7f7;
     }
-
     .wrapper {
       display: flex;
       flex-wrap: wrap;
@@ -23,35 +22,29 @@
       overflow: hidden;
       box-shadow: 0 0 20px rgba(0,0,0,0.1);
     }
-
     .left, .right {
       padding: 20px;
     }
-
     .left {
       flex: 1;
       min-width: 250px;
       background: #f9f9f9;
       text-align: center;
     }
-
     .left img {
       max-width: 100%;
       border-radius: 10px;
       border: 1px solid #ddd;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-
     .left img:hover {
       transform: scale(1.02);
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-
     .right {
       flex: 2;
       min-width: 300px;
     }
-
     .btn {
       padding: 12px 20px;
       background: #e53935;
@@ -65,12 +58,10 @@
       cursor: pointer;
       transition: all 0.3s;
     }
-
     .btn:hover {
       transform: scale(1.03);
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-
     .social a {
       display: inline-block;
       margin: 10px 5px 0 0;
@@ -81,12 +72,10 @@
       font-weight: bold;
       transition: 0.3s;
     }
-
     .social a:hover {
       transform: translateY(-3px);
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-
     .fb { background: #4267B2; }
     .pin { background: #BD081C; }
     .tg { background: #229ED9; }
@@ -102,7 +91,6 @@
       align-items: center;
       z-index: 999;
     }
-
     .popup-content {
       background: #fff;
       padding: 25px;
@@ -110,26 +98,22 @@
       border-radius: 10px;
       text-align: center;
     }
-
     .popup-content img {
       max-width: 100%;
       border-radius: 10px;
       margin-bottom: 15px;
     }
-
     .close {
       margin-top: 10px;
       color: #666;
       cursor: pointer;
       text-decoration: underline;
     }
-
     input[type="number"] {
       width: 60px;
       padding: 5px;
       font-size: 14px;
     }
-
     select {
       padding: 6px;
       font-size: 14px;
@@ -141,7 +125,7 @@
 <div class="wrapper">
   <!-- BÊN TRÁI -->
   <div class="left">
-    <img id="product-img" src="https://ibb.co/C3HmGCGG/1ngay.jpg" alt="Hình sản phẩm">
+    <img id="product-img" src="https://i.ibb.co/gLRmKqK/T-i-kho-n-Netflix-Premium-1-ng-y.png" alt="Gói 1 ngày">
     <p style="font-size:14px;color:#666;margin-top:10px;">Quét mã QR để thanh toán</p>
     <button class="btn" onclick="showPopup()">💳 MUA NGAY</button>
   </div>
@@ -170,7 +154,7 @@
     <hr>
 
     <h3>Lưu ý quan trọng</h3>
-    <ul style="font-size:14px;line-height:1.6;">
+    <ul style="font-size:15px;line-height:1.7;margin:0;padding-left:18px;">
       <li>Sau khi thanh toán, bấm "Nhận Tài Khoản" để gửi thông tin.</li>
       <li>Không thay đổi mật khẩu khi sử dụng.</li>
       <li>Không cộng dồn thời hạn nếu mua nhiều.</li>
@@ -179,8 +163,8 @@
       <li>Hãy kiểm tra kỹ sản phẩm trước khi mua.</li>
     </ul>
 
-    <h3>Quy trình nhận hàng</h3>
-    <ol style="font-size:14px;line-height:1.6;">
+    <h3 style="margin-top:25px;">Quy trình nhận hàng</h3>
+    <ol style="font-size:15px;line-height:1.7;padding-left:20px;">
       <li>Nhận 1 user riêng trong tài khoản tạo sẵn.</li>
       <li>Sau thanh toán, nhận được Email, mật khẩu, user.</li>
       <li>Xử lý đơn trong vòng 1 giờ.</li>
@@ -212,10 +196,10 @@
 
 <script>
   const imgMap = {
-    "1": "https://i.ibb.co/CB6Dkdh/1ngay.jpg",
-    "7": "https://i.ibb.co/3FT4Hpj/1tuan.jpg",
-    "30": "https://i.ibb.co/JzPbJZw/1thang.jpg",
-    "365": "https://i.ibb.co/3RDFG4T/1nam.jpg"
+    "1": "https://i.ibb.co/gLRmKqK/T-i-kho-n-Netflix-Premium-1-ng-y.png",
+    "7": "https://i.ibb.co/chVcBFp/T-i-kho-n-Netflix-Premium-1-tu-n.png",
+    "30": "https://i.ibb.co/bRGpGd8G/T-i-kho-n-Netflix-Premium-1-th-ng.png",
+    "365": "https://i.ibb.co/wF5LSqgy/T-i-kho-n-Netflix-Premium-1-n-m.png"
   };
 
   const qrMap = {
@@ -252,4 +236,3 @@
 </script>
 </body>
 </html>
-
