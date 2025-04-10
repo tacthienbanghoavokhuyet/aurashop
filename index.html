@@ -118,6 +118,25 @@
       padding: 6px;
       font-size: 14px;
     }
+
+    /* ===== Responsive cho mobile ===== */
+    @media (max-width: 600px) {
+      .right {
+        max-height: 70vh;        /* Giới hạn chiều cao */
+        overflow-y: auto;        /* Cho phép cuộn dọc */
+        padding-right: 10px;     /* Giảm padding */
+      }
+      .right ul,
+      .right ol {
+        padding-inline-start: 1em; /* Giảm indent */
+      }
+      .right ul li,
+      .right ol li {
+        font-size: 14px;         /* Giảm font-size */
+        line-height: 1.5;        /* Tăng khoảng cách dòng */
+        margin-bottom: 6px;      /* Khoảng cách giữa các mục */
+      }
+    }
   </style>
 </head>
 <body>
@@ -125,7 +144,7 @@
 <div class="wrapper">
   <!-- BÊN TRÁI -->
   <div class="left">
-    <img id="product-img" src="https://i.ibb.co/gLRmKqK/T-i-kho-n-Netflix-Premium-1-ng-y.png" alt="Gói 1 ngày">
+    <img id="product-img" src="https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_ng%C3%A0y_eoe5ow.png" alt="Gói 1 ngày">
     <p style="font-size:14px;color:#666;margin-top:10px;">Quét mã QR để thanh toán</p>
     <button class="btn" onclick="showPopup()">💳 MUA NGAY</button>
   </div>
@@ -196,10 +215,10 @@
 
 <script>
   const imgMap = {
-    "1": "https://i.ibb.co/gLRmKqK/T-i-kho-n-Netflix-Premium-1-ng-y.png",
-    "7": "https://i.ibb.co/chVcBFp/T-i-kho-n-Netflix-Premium-1-tu-n.png",
-    "30": "https://i.ibb.co/bRGpGd8G/T-i-kho-n-Netflix-Premium-1-th-ng.png",
-    "365": "https://i.ibb.co/wF5LSqgy/T-i-kho-n-Netflix-Premium-1-n-m.png"
+    "1": "https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_ng%C3%A0y_eoe5ow.png",
+    "7": "https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_tu%E1%BA%A7n_eeoi4x.png",
+    "30": "https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_th%C3%A1ng_l9exo8.png",
+    "365": "https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_n%C4%83m_v6txkk.png"
   };
 
   const qrMap = {
