@@ -1,1 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thanh toán Netflix - AuraShop</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f7f7f7;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .left, .right {
+      padding: 20px;
+    }
+
+    .left {
+      flex: 1;
+      min-width: 250px;
+      background: #f9f9f9;
+      text-align: center;
+    }
+
+    .left img {
+      max-width: 100%;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .left img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .right {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      background: #e53935;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .social a {
+      display: inline-block;
+      margin: 10px 5px 0 0;
+      padding: 8px 12px;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .social a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .fb { background: #4267B2; }
+    .pin { background: #BD081C; }
+    .tg { background: #229ED9; }
+    .zalo { background: #0674e7; }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background: #fff;
+      padding: 25px;
+      max-width: 400px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .popup-content img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .close {
+      margin-top: 10px;
+      color: #666;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    input[type="number"] {
+      width: 60px;
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    select {
+      padding: 6px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+  <!-- BÊN TRÁI -->
+  <div class="left">
+    <img id="product-img" src="https://ibb.co/C3HmGCGG/1ngay.jpg" alt="Hình sản phẩm">
+    <p style="font-size:14px;color:#666;margin-top:10px;">Quét mã QR để thanh toán</p>
+    <button class="btn" onclick="showPopup()">💳 MUA NGAY</button>
+  </div>
+
+  <!-- BÊN PHẢI -->
+  <div class="right">
+    <h2 style="color:#e53935;">Netflix Premium - Tài khoản</h2>
+    <p><strong>Tình trạng:</strong> <span style="color:green;">Còn hàng</span></p>
+    <p><strong>Thể loại:</strong> App, Giải trí, Xem phim</p>
+
+    <p><strong>Thời hạn:</strong>
+      <select id="plan" onchange="updateInfo()">
+        <option value="1">1 ngày</option>
+        <option value="7">1 tuần</option>
+        <option value="30">1 tháng</option>
+        <option value="365">1 năm</option>
+      </select>
+    </p>
+
+    <p><strong>Số lượng:</strong>
+      <input type="number" id="qty" value="1" min="1" onchange="updateInfo()">
+    </p>
+
+    <p><strong>Giá:</strong> <span id="price" style="color:#e53935;font-size:18px;">25.000đ</span></p>
+
+    <hr>
+
+    <h3>Lưu ý quan trọng</h3>
+    <ul style="font-size:14px;line-height:1.6;">
+      <li>Sau khi thanh toán, bấm "Nhận Tài Khoản" để gửi thông tin.</li>
+      <li>Không thay đổi mật khẩu khi sử dụng.</li>
+      <li>Không cộng dồn thời hạn nếu mua nhiều.</li>
+      <li>Dành cho người dùng ngắn hạn, tiết kiệm chi phí.</li>
+      <li>Hệ thống có thể thay đổi mật khẩu để bảo mật.</li>
+      <li>Hãy kiểm tra kỹ sản phẩm trước khi mua.</li>
+    </ul>
+
+    <h3>Quy trình nhận hàng</h3>
+    <ol style="font-size:14px;line-height:1.6;">
+      <li>Nhận 1 user riêng trong tài khoản tạo sẵn.</li>
+      <li>Sau thanh toán, nhận được Email, mật khẩu, user.</li>
+      <li>Xử lý đơn trong vòng 1 giờ.</li>
+      <li>Bấm "Nhận Tài Khoản" để gửi info.</li>
+      <li>1 thiết bị 1 thời điểm (không xem cùng lúc).</li>
+      <li>Chỉ dùng ở Việt Nam và một số nước Đông Nam Á.</li>
+      <li>Có hướng dẫn đăng nhập sau khi mua.</li>
+    </ol>
+
+    <div class="social">
+      <a href="https://www.facebook.com/shopauraasia" class="fb" target="_blank">Facebook</a>
+      <a href="https://www.pinterest.com/aurashopasia/" class="pin" target="_blank">Pinterest</a>
+      <a href="https://t.me/aurashopasia" class="tg" target="_blank">Telegram</a>
+      <a href="https://zalo.me/0377104835" class="zalo" target="_blank">Zalo</a>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h3>Thanh toán qua QR</h3>
+    <img id="qr-img" src="">
+    <p style="font-size:14px;">Sau khi quét mã QR thanh toán thành công, bấm nút bên dưới để gửi thông tin đơn hàng.</p>
+    <a class="btn" href="http://m.me/shopauraasia/" target="_blank">💬 Nhận Tài Khoản</a>
+    <div class="close" onclick="document.getElementById('popup').style.display='none'">Đóng</div>
+  </div>
+</div>
+
+<script>
+  const imgMap = {
+    "1": "https://i.ibb.co/CB6Dkdh/1ngay.jpg",
+    "7": "https://i.ibb.co/3FT4Hpj/1tuan.jpg",
+    "30": "https://i.ibb.co/JzPbJZw/1thang.jpg",
+    "365": "https://i.ibb.co/3RDFG4T/1nam.jpg"
+  };
+
+  const qrMap = {
+    "1": 25000,
+    "7": 70000,
+    "30": 130000,
+    "365": 390000
+  };
+
+  function updateInfo() {
+    const plan = document.getElementById('plan').value;
+    const qty = parseInt(document.getElementById('qty').value);
+    const price = qrMap[plan] * qty;
+    document.getElementById('price').innerText = price.toLocaleString('vi-VN') + 'đ';
+    document.getElementById('product-img').src = imgMap[plan];
+  }
+
+  function showPopup() {
+    const plan = document.getElementById('plan').value;
+    const qty = parseInt(document.getElementById('qty').value);
+    const price = qrMap[plan] * qty;
+    const baseQR = {
+      "1": "acc+netflix+1ngay",
+      "7": "acc+netflix+1tuan",
+      "30": "acc+netflix+1thang",
+      "365": "acc+netflix+1nam"
+    };
+    const qrURL = `https://qr.sepay.vn/img?bank=TPBank&acc=16661388888&template=compact&amount=${price}&des=${baseQR[plan]}`;
+    document.getElementById('qr-img').src = qrURL;
+    document.getElementById('popup').style.display = "flex";
+  }
+
+  updateInfo();
+</script>
+</body>
+</html>
 
