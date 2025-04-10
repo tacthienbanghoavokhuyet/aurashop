@@ -1,54 +1,239 @@
-<div style="display:flex;flex-wrap:wrap;max-width:900px;margin:auto;font-family:sans-serif;border:1px solid #ccc;border-radius:10px;overflow:hidden;">
-  <!-- BÊN TRÁI: ẢNH -->
-  <div style="flex:1;min-width:250px;background:#f9f9f9;padding:20px;text-align:center;">
-    <img src="https://qr.sepay.vn/img?bank=TPBank&acc=16661388888&template=compact&amount=25000&des=acc+netflix+1ngay" style="max-width:100%;border-radius:10px;border:1px solid #ddd;">
-    <p style="font-size:14px;color:#666;margin-top:10px;">Quét mã QR để thanh toán</p>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mua tài khoản Netflix Premium giá rẻ, dùng ngay, thanh toán nhanh chóng bằng QR. Giao hàng tự động trong 1 giờ.">
+  <meta name="keywords" content="Netflix, tài khoản Netflix, mua tài khoản, thanh toán QR, Netflix giá rẻ">
+  <title>Mua tài khoản Netflix Premium - AuraShop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #fdfdfd;
+      color: #333;
+    }
 
-    <!-- NÚT NHẬN TÀI KHOẢN -->
-    <a href="http://m.me/shopauraasia/" target="_blank" style="display:inline-block;margin-top:15px;padding:12px 20px;background:#e53935;color:#fff;border-radius:5px;font-weight:bold;text-decoration:none;">
-      💬 Nhận Tài Khoản
-    </a>
+    .container {
+      max-width: 960px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      background: #fff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
 
-    <!-- ẢNH LÔLI ĐÁNG YÊU -->
-    <div style="margin-top:20px;">
-      <img src="https://i.imgur.com/lOqlnqY.jpeg" style="max-width:100%;border-radius:10px;border:1px solid #ddd;">
-    </div>
+    .left, .right {
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .left {
+      flex: 1;
+      min-width: 280px;
+      background: #fafafa;
+      text-align: center;
+    }
+
+    .left img {
+      max-width: 100%;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      transition: all 0.3s ease;
+    }
+
+    .left img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .right {
+      flex: 2;
+      min-width: 320px;
+    }
+
+    .price span {
+      font-weight: bold;
+      font-size: 20px;
+      color: #e53935;
+    }
+
+    .quantity, .duration {
+      margin: 10px 0;
+    }
+
+    input[type="number"] {
+      width: 60px;
+      padding: 5px;
+      margin-left: 10px;
+      font-size: 14px;
+    }
+
+    select {
+      padding: 5px;
+      font-size: 14px;
+      margin-left: 10px;
+    }
+
+    button.buy {
+      background: #e53935;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+
+    button.buy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    }
+
+    .popup-content img {
+      max-width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .popup-content p {
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
+    .popup-content a {
+      display: inline-block;
+      margin-top: 10px;
+      background: #2e7d32;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .close {
+      margin-top: 10px;
+      color: #999;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .continue {
+      margin-top: 20px;
+      display: inline-block;
+      text-decoration: none;
+      background: #1976d2;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 6px;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- LEFT -->
+  <div class="left">
+    <img src="https://i.imgur.com/lOqlnqY.jpeg" alt="Netflix account">
+    <p style="margin-top: 10px;">Ảnh minh hoạ sản phẩm</p>
+    <a class="continue" href="https://tacthienbanghoavokhuyet.github.io/aurashop/">🏠 Về trang chủ</a>
   </div>
 
-  <!-- BÊN PHẢI: THÔNG TIN -->
-  <div style="flex:2;min-width:300px;padding:20px;">
-    <h2 style="color:#e53935;">Netflix Premium 1 ngày - Tài khoản</h2>
+  <!-- RIGHT -->
+  <div class="right">
+    <h2>Netflix Premium - Tài khoản dùng 1 ngày</h2>
     <p><strong>Tình trạng:</strong> <span style="color:green;">Còn hàng</span></p>
-    <p><strong>Mã sản phẩm:</strong> acc netflix 1ngay</p>
-    <p><strong>Thể loại:</strong> App, Giải trí, Xem phim</p>
-    <p><strong>Giá:</strong> 
-      <span style="color:#e53935;font-size:20px;font-weight:bold;">25.000đ</span> 
-      <span style="text-decoration:line-through;color:#999;margin-left:10px;">260.000đ</span>
-    </p>
+    <p><strong>Mã sản phẩm:</strong> acc-netflix-1day</p>
+    <p><strong>Thể loại:</strong> Giải trí, App xem phim</p>
 
-    <hr style="margin:20px 0;">
+    <div class="price">
+      Giá: <span id="price">25.000đ</span>
+      <span style="text-decoration:line-through;color:#888;margin-left:10px;">260.000đ</span>
+    </div>
 
-    <h3 style="color:#333;">Lưu ý quan trọng</h3>
-    <ul style="font-size:14px;color:#444;line-height:1.6;">
+    <div class="quantity">
+      <label>Số lượng: <input type="number" id="qty" min="1" value="1"></label>
+    </div>
+
+    <div class="duration">
+      <label>Thời hạn:
+        <select id="duration">
+          <option value="1">1 ngày</option>
+          <option value="5">1 tuần</option>
+          <option value="20">1 tháng</option>
+        </select>
+      </label>
+    </div>
+
+    <button class="buy" onclick="showPopup()">MUA NGAY</button>
+
+    <h3 style="margin-top:30px;">Lưu ý khi sử dụng:</h3>
+    <ul style="font-size:14px;line-height:1.6;">
       <li>Sau khi thanh toán, bấm <strong>"Nhận Tài Khoản"</strong> để gửi thông tin.</li>
-      <li>Không thay đổi mật khẩu khi sử dụng.</li>
-      <li>Không cộng dồn thời hạn nếu mua nhiều.</li>
-      <li>Dành cho người dùng 1 ngày, tiết kiệm chi phí.</li>
-      <li>Hệ thống có thể thay đổi mật khẩu để bảo mật.</li>
-      <li>Hãy kiểm tra kỹ sản phẩm trước khi mua.</li>
+      <li>Không đổi mật khẩu hoặc chia sẻ.</li>
+      <li>Dùng 1 thiết bị, 1 thời điểm, không chia sẻ người khác.</li>
     </ul>
-
-    <h3 style="color:#333;margin-top:20px;">Quy trình nhận hàng</h3>
-    <ol style="font-size:14px;color:#444;line-height:1.6;">
-      <li>Nhận 1 user riêng trong tài khoản tạo sẵn.</li>
-      <li>Sau thanh toán, nhận được Email, mật khẩu, user.</li>
-      <li>Xử lý đơn trong vòng 1 giờ.</li>
-      <li>Sau thanh toán, bấm "Nhận Tài Khoản" để gửi info.</li>
-      <li>1 thiết bị 1 thời điểm (không xem cùng lúc).</li>
-      <li>Chỉ dùng ở Việt Nam và một số nước Đông Nam Á.</li>
-      <li>Có hướng dẫn đăng nhập sau khi mua.</li>
-    </ol>
   </div>
 </div>
 
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h3>Thanh toán qua QR</h3>
+    <img src="https://qr.sepay.vn/img?bank=TPBank&acc=16661388888&template=compact&amount=25000&des=acc+netflix+1ngay" alt="QR">
+    <p>Sau khi quét mã và thanh toán thành công, vui lòng bấm nút dưới để gửi thông tin đơn hàng.</p>
+    <a href="http://m.me/shopauraasia/" target="_blank">💬 Nhận tài khoản</a>
+    <div class="close" onclick="hidePopup()">Đóng</div>
+  </div>
+</div>
 
+<script>
+  const qty = document.getElementById("qty");
+  const duration = document.getElementById("duration");
+  const price = document.getElementById("price");
+
+  function updatePrice() {
+    let base = 25000;
+    let total = base * qty.value * (duration.value / 1);
+    price.innerText = total.toLocaleString("vi-VN") + "đ";
+  }
+
+  qty.addEventListener("input", updatePrice);
+  duration.addEventListener("change", updatePrice);
+
+  function showPopup() {
+    document.getElementById("popup").style.display = "flex";
+  }
+
+  function hidePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
