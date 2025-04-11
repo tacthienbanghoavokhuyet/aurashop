@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AuraShop</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <style>
-    * { box-sizing: border-box; margin:0; padding:0; }
+    * { box-sizing:border-box; margin:0; padding:0 }
     body {
-      font-family: 'Roboto', sans-serif;
-      background: #f7f7f7;
-      color: #333;
-      transition: background .3s,color .3s;
+      font-family:'Roboto',sans-serif;
+      background:#f7f7f7; color:#333;
+      transition:background .3s,color .3s;
     }
-    header {
-      background: #e53935; color:#fff;
-      padding: 10px; text-align:center;
-    }
+    header { background:#e53935; color:#fff; text-align:center; padding:10px 0 }
     nav {
-      display: flex; justify-content:center; flex-wrap:wrap;
-      gap:10px; padding:10px; background:#fff;
+      display:flex; justify-content:center; flex-wrap:wrap; gap:10px;
+      padding:10px; background:#fff;
       box-shadow:0 2px 4px rgba(0,0,0,0.1);
     }
     nav a {
@@ -28,31 +23,21 @@
       text-decoration:none; border-radius:5px; font-weight:600;
       transition:background .3s,color .3s;
     }
-    nav a:hover {
-      background:#e53935; color:#fff;
-    }
+    nav a:hover { background:#e53935; color:#fff }
 
-    /* GRID LAYOUT */
     .container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap:20px;
-      max-width:1000px;
-      margin:20px auto;
-      background:#fff;
-      border-radius:10px;
+      max-width:1000px; margin:20px auto;
+      background:#fff; border-radius:10px;
       box-shadow:0 0 20px rgba(0,0,0,0.1);
-      overflow:hidden;
-    }
-    .container > div {
       padding:20px;
     }
-    .product-img {
-      width:100%; border-radius:10px; border:1px solid #ddd;
-    }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px }
+    @media(max-width:768px){ .grid-2{grid-template-columns:1fr} }
+
+    .product-img { width:100%; border-radius:10px; border:1px solid #ddd }
+
     .btn {
-      display:inline-block;
-      padding:12px 20px;
+      display:inline-block; padding:12px 20px;
       background:#e53935; color:#fff;
       border:none; border-radius:5px;
       font-weight:bold; cursor:pointer;
@@ -63,59 +48,37 @@
       transform:scale(1.03);
       box-shadow:0 4px 10px rgba(0,0,0,0.2);
     }
-    .info p, .info select, .info input {
-      margin-top:10px; font-size:15px;
-    }
-    .info select, .info input {
-      padding:6px; font-size:14px;
-    }
+
+    .info h2 { color:#e53935; margin-bottom:10px }
+    .stars { color:#f5a623; margin-bottom:10px; font-size:18px }
+    .info p { margin:8px 0; font-size:15px }
+    .info select { padding:6px; font-size:14px; margin-top:4px }
+    .info .price { font-size:24px; color:#e53935; margin:12px 0 }
+
+    hr { border:none; border-top:1px solid #eee; margin:20px 0 }
+
     .info ul, .info ol {
-      margin:10px 0 0 20px; line-height:1.6;
-    }
-    .social-links {
-      margin-top:20px; display:flex; gap:10px;
-    }
-    .social-links a {
-      flex:1; text-align:center;
-      padding:10px; border-radius:5px;
-      color:#fff; text-decoration:none;
-    }
-    .social-links .fb { background:#4267B2; }
-    .social-links .pin { background:#BD081C; }
-    .social-links .tg { background:#229ED9; }
-    .social-links .zalo { background:#0674e7; }
-
-    /* POPUP */
-    .popup {
-      display:none; position:fixed;
-      top:0;left:0;width:100%;height:100%;
-      background:rgba(0,0,0,0.5);
-      justify-content:center;align-items:center;
-      z-index:1000;
-    }
-    .popup-content {
-      background:#fff; padding:25px;
-      border-radius:10px; max-width:400px;
-      text-align:center;
-    }
-    .popup-content img {
-      width:100%; border-radius:10px; margin-bottom:15px;
-    }
-    .close-btn {
-      margin-top:10px; color:#666;
-      cursor:pointer; text-decoration:underline;
+      margin-left:20px; line-height:1.6; font-size:15px
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .container { grid-template-columns: 1fr; }
+    /* bottom trust section */
+    .trust {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:10px; margin-top:30px; text-align:center;
     }
+    @media(max-width:768px){ .trust{grid-template-columns:1fr 1fr} }
+    .trust-item { background:#fafafa; padding:15px; border-radius:8px }
+    .trust-item .icon { font-size:24px; margin-bottom:8px }
+    .trust-item .title { font-weight:bold; margin-bottom:4px }
+    .trust-item .desc { font-size:14px; color:#666 }
+
+    /* hidden iframe */
+    iframe { display:none }
   </style>
 </head>
 <body>
 
   <header><h1>AuraShop</h1></header>
-
   <nav>
     <a href="#">HOME</a>
     <a href="#">DANH MỤC SẢN PHẨM</a>
@@ -124,81 +87,105 @@
     <a href="#">VPN</a>
   </nav>
 
-  <!-- Nhạc YouTube tự động -->
-  <iframe width="0" height="0" src="https://www.youtube.com/embed/4EuknxA6ZtQ?autoplay=1&loop=1&playlist=4EuknxA6ZtQ" 
-          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-  </iframe>
+  <!-- Nhạc YouTube autoplay -->
+  <iframe src="https://www.youtube.com/embed/4EuknxA6ZtQ?autoplay=1&loop=1&playlist=4EuknxA6ZtQ" allow="autoplay" ></iframe>
+  <!-- fallback audio -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/11/03/audio_f49102b3e3.mp3" type="audio/mp3">
+  </audio>
 
   <div class="container">
-    <!-- ẢNH & MUA NGAY -->
-    <div class="image-box">
-      <img id="product-img" class="product-img"
-           src="https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_ng%C3%A0y_eoe5ow.png"
-           alt="Netflix Premium">
-      <button class="btn" onclick="showPopup()">💳 MUA NGAY</button>
+    <div class="grid-2">
+      <!-- image + button -->
+      <div>
+        <img id="product-img" class="product-img"
+             src="https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_ng%C3%A0y_eoe5ow.png"
+             alt="Netflix Premium">
+        <button class="btn" onclick="showPopup()">💳 MUA NGAY</button>
+      </div>
+      <!-- info -->
+      <div class="info">
+        <div class="stars">★★★★★</div>
+        <h2>Netflix Premium - Tài khoản</h2>
+        <p><strong>Tình trạng:</strong> <span style="color:green">Còn hàng</span></p>
+        <p><strong>Thể loại:</strong> App, Giải trí, Xem phim</p>
+
+        <p><strong>Gói sản phẩm:</strong><br>
+          <select id="plan" onchange="updateInfo()">
+            <option value="1">1 Ngày</option>
+            <option value="7">1 Tuần</option>
+            <option value="30">1 Tháng</option>
+            <option value="365">1 Năm - 5 Thiết bị (Điện thoại + PC + iPad + MacOS)</option>
+          </select>
+        </p>
+
+        <div class="price"><strong>Giá:</strong> <span id="price">25.000đ</span></div>
+
+        <hr>
+
+        <h3>Lưu ý quan trọng</h3>
+        <ul>
+          <li>Sau khi quét mã QR thanh toán thành công, bấm nút "Nhận tài khoản" để gửi thông tin thanh toán.</li>
+          <li>Không thay đổi mật khẩu khi sử dụng.</li>
+          <li>Không cộng dồn thời hạn nếu mua nhiều.</li>
+          <li>Dành cho người dùng ngắn hạn, tiết kiệm chi phí.</li>
+          <li>Hệ thống có thể thay đổi mật khẩu để bảo mật.</li>
+          <li>Hãy kiểm tra kỹ sản phẩm trước khi mua.</li>
+        </ul>
+
+        <h3>Quy trình nhận hàng</h3>
+        <ol>
+          <li>Nhận 1 user riêng trong tài khoản tạo sẵn.</li>
+          <li>Sau thanh toán, nhận được Email, mật khẩu, user.</li>
+          <li>Xử lý đơn trong vòng 1 giờ.</li>
+          <li>Bấm "Nhận tài khoản" để gửi info.</li>
+          <li>1 thiết bị 1 thời điểm (không xem cùng lúc).</li>
+          <li>Chỉ dùng ở Việt Nam và một số nước Đông Nam Á.</li>
+          <li>Có hướng dẫn đăng nhập sau khi mua.</li>
+        </ol>
+
+        <div class="social-links">
+          <a href="https://www.facebook.com/shopauraasia" class="fb">Facebook</a>
+          <a href="https://www.pinterest.com/aurashopasia/" class="pin">Pinterest</a>
+          <a href="https://t.me/aurashopasia" class="tg">Telegram</a>
+          <a href="https://zalo.me/0377104835" class="zalo">Zalo</a>
+        </div>
+      </div>
     </div>
 
-    <!-- THÔNG TIN SẢN PHẨM -->
-    <div class="info">
-      <h2 style="color:#e53935;">Netflix Premium - Tài khoản</h2>
-      <p><strong>Tình trạng:</strong> <span style="color:green;">Còn hàng</span></p>
-      <p><strong>Thể loại:</strong> App, Giải trí, Xem phim</p>
-
-      <p><strong>Thời hạn:</strong>
-        <select id="plan" onchange="updateInfo()">
-          <option value="1">1 ngày</option>
-          <option value="7">1 tuần</option>
-          <option value="30">1 tháng</option>
-          <option value="365">1 năm</option>
-        </select>
-      </p>
-
-      <p><strong>Số lượng:</strong>
-        <input type="number" id="qty" value="1" min="1" onchange="updateInfo()">
-      </p>
-
-      <p><strong>Giá:</strong>
-        <span id="price" style="color:#e53935;font-size:18px;">25.000đ</span>
-      </p>
-
-      <hr>
-
-      <h3>Lưu ý quan trọng</h3>
-      <ul>
-        <li>Sau khi quét mã QR thanh toán thành công, bấm nút "Nhận tài khoản" để gửi thông tin thanh toán.</li>
-        <li>Không thay đổi mật khẩu khi sử dụng.</li>
-        <li>Không cộng dồn thời hạn nếu mua nhiều.</li>
-        <li>Dành cho người dùng ngắn hạn, tiết kiệm chi phí.</li>
-        <li>Hệ thống có thể thay đổi mật khẩu để bảo mật.</li>
-        <li>Hãy kiểm tra kỹ sản phẩm trước khi mua.</li>
-      </ul>
-
-      <h3>Quy trình nhận hàng</h3>
-      <ol>
-        <li>Nhận 1 user riêng trong tài khoản tạo sẵn.</li>
-        <li>Sau thanh toán, nhận được Email, mật khẩu, user.</li>
-        <li>Xử lý đơn trong vòng 1 giờ.</li>
-        <li>Bấm "Nhận tài khoản" để gửi info.</li>
-        <li>1 thiết bị 1 thời điểm (không xem cùng lúc).</li>
-        <li>Chỉ dùng ở Việt Nam và một số nước Đông Nam Á.</li>
-        <li>Có hướng dẫn đăng nhập sau khi mua.</li>
-      </ol>
-
-      <div class="social-links">
-        <a href="https://www.facebook.com/shopauraasia" class="fb">Facebook</a>
-        <a href="https://www.pinterest.com/aurashopasia/" class="pin">Pinterest</a>
-        <a href="https://t.me/aurashopasia" class="tg">Telegram</a>
-        <a href="https://zalo.me/0377104835" class="zalo">Zalo</a>
+    <!-- bottom trust icons -->
+    <div class="trust">
+      <div class="trust-item">
+        <div class="icon">🏷️</div>
+        <div class="title">Sản phẩm cao cấp</div>
+        <div class="desc">Bản quyền chính hãng</div>
+      </div>
+      <div class="trust-item">
+        <div class="icon">🛡️</div>
+        <div class="title">Bảo hành vĩnh viễn</div>
+        <div class="desc">Hoàn tiền 100%</div>
+      </div>
+      <div class="trust-item">
+        <div class="icon">⚙️</div>
+        <div class="title">Hỗ trợ cài đặt</div>
+        <div class="desc">Hướng dẫn tận tình chu đáo</div>
+      </div>
+      <div class="trust-item">
+        <div class="icon">💳</div>
+        <div class="title">Đặt hàng, thanh toán</div>
+        <div class="desc">Nhanh chóng, tiện lợi</div>
       </div>
     </div>
   </div>
 
-  <!-- POPUP -->
-  <div class="popup" id="popup">
-    <div class="popup-content">
+  <!-- popup -->
+  <div class="popup" id="popup" onclick="this.style.display='none'">
+    <div class="popup-content" onclick="event.stopPropagation()">
       <h3>Thanh toán qua QR</h3>
-      <img id="qr-img" src="" alt="QR code">
-      <p>Sau khi quét mã QR thanh toán thành công, bấm nút "Nhận tài khoản" bên dưới để gửi thông tin thanh toán cho mình xử lý đơn hàng.</p>
+      <img id="qr-img" src="" alt="QR code" />
+      <p style="margin-top:10px;">
+        Sau khi quét mã QR thanh toán thành công, bấm nút "Nhận tài khoản" bên dưới để gửi thông tin thanh toán cho mình xử lý đơn hàng.
+      </p>
       <a class="btn" href="http://m.me/shopauraasia/" target="_blank">💬 Nhận tài khoản</a>
       <div class="close-btn" onclick="document.getElementById('popup').style.display='none'">Đóng</div>
     </div>
@@ -206,33 +193,30 @@
 
   <script>
     const imgMap = {
-      "1": "https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_ng%C3%A0y_eoe5ow.png",
-      "7": "https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_tu%E1%BA%A7n_eeoi4x.png",
-      "30": "https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_th%C3%A1ng_l9exo8.png",
-      "365": "https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_n%C4%83m_v6txkk.png"
+      "1":"https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_ng%C3%A0y_eoe5ow.png",
+      "7":"https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_tu%E1%BA%A7n_eeoi4x.png",
+      "30":"https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_th%C3%A1ng_l9exo8.png",
+      "365":"https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_n%C4%83m_v6txkk.png"
     };
-    const qrMap = { "1":25000, "7":70000, "30":130000, "365":390000 };
-    const qrDesc= { "1":"acc+netflix+1ngay", "7":"acc+netflix+1tuan", "30":"acc+netflix+1thang", "365":"acc+netflix+1nam" };
+    const qrMap = {"1":25000,"7":70000,"30":130000,"365":390000};
+    const qrDesc={"1":"acc+netflix+1ngay","7":"acc+netflix+1tuan","30":"acc+netflix+1thang","365":"acc+netflix+1nam"};
 
     function updateInfo(){
       const plan=document.getElementById('plan').value;
-      const qty =parseInt(document.getElementById('qty').value);
-      const price=qrMap[plan]*qty;
+      const price=qrMap[plan];
       document.getElementById('price').innerText=price.toLocaleString('vi-VN')+'đ';
       document.getElementById('product-img').src=imgMap[plan];
     }
 
     function showPopup(){
       const plan=document.getElementById('plan').value;
-      const qty =parseInt(document.getElementById('qty').value);
-      const amount=qrMap[plan]*qty;
-      const des  =qrDesc[plan];
-      const qrURL=`https://qr.sepay.vn/img?bank=TPBank&acc=16661388888&template=compact&amount=${amount}&des=${des}`;
-      document.getElementById('qr-img').src=qrURL;
+      const amount=qrMap[plan];
+      const des=qrDesc[plan];
+      const url=`https://qr.sepay.vn/img?bank=TPBank&acc=16661388888&template=compact&amount=${amount}&des=${des}`;
+      document.getElementById('qr-img').src=url;
       document.getElementById('popup').style.display='flex';
     }
 
-    // init
     updateInfo();
   </script>
 </body>
