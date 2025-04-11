@@ -4,276 +4,146 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AuraShop</title>
-  <!-- Google Font Roboto -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
-    /* ========== COMMON RESET ========== */
     * { box-sizing: border-box; margin:0; padding:0; }
     body {
       font-family: 'Roboto', sans-serif;
       background: #f7f7f7;
       color: #333;
-      transition: background 0.3s, color 0.3s;
-      padding-top: 20px;
+      transition: background .3s,color .3s;
     }
-
-    /* ========== HEADER & NAV ========== */
     header {
-      background: #e53935;
-      color: #fff;
-      text-align: center;
-      padding: 10px 0;
+      background: #e53935; color:#fff;
+      padding: 10px; text-align:center;
     }
     nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      background: #fff;
-      padding: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 500;
+      display: flex; justify-content:center; flex-wrap:wrap;
+      gap:10px; padding:10px; background:#fff;
+      box-shadow:0 2px 4px rgba(0,0,0,0.1);
     }
-    nav a, .dropdown-btn {
-      display: inline-block;
-      padding: 8px 12px;
-      background: #eee;
-      color: #333;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s;
+    nav a {
+      padding:8px 12px; background:#eee; color:#333;
+      text-decoration:none; border-radius:5px; font-weight:600;
+      transition:background .3s,color .3s;
     }
-    nav a:hover, .dropdown-btn:hover {
-      background: #e53935;
-      color: #fff;
-    }
-    .dropdown {
-      position: relative;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #fff;
-      border: 1px solid #ccc;
-      min-width: 160px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      z-index: 600;
-    }
-    .dropdown-content a {
-      display: block;
-      padding: 8px 12px;
-      background: #fff;
-      color: #333;
-    }
-    .dropdown-content a:hover {
-      background: #eee;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
+    nav a:hover {
+      background:#e53935; color:#fff;
     }
 
-    /* ========== PRODUCT WRAPPER ========== */
-    .wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      max-width: 1000px;
-      margin: 20px auto;
-      background: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    /* GRID LAYOUT */
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap:20px;
+      max-width:1000px;
+      margin:20px auto;
+      background:#fff;
+      border-radius:10px;
+      box-shadow:0 0 20px rgba(0,0,0,0.1);
+      overflow:hidden;
     }
-    .left, .right {
-      padding: 20px;
+    .container > div {
+      padding:20px;
     }
-    .left {
-      flex: 1;
-      min-width: 250px;
-      background: #f9f9f9;
-      text-align: center;
-    }
-    .left img {
-      max-width: 100%;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .left img:hover {
-      transform: scale(1.02);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .right {
-      flex: 2;
-      min-width: 300px;
+    .product-img {
+      width:100%; border-radius:10px; border:1px solid #ddd;
     }
     .btn {
-      padding: 12px 20px;
-      background: #e53935;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 15px;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
+      display:inline-block;
+      padding:12px 20px;
+      background:#e53935; color:#fff;
+      border:none; border-radius:5px;
+      font-weight:bold; cursor:pointer;
+      transition:transform .3s,box-shadow .3s;
+      margin-top:15px;
     }
     .btn:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transform:scale(1.03);
+      box-shadow:0 4px 10px rgba(0,0,0,0.2);
     }
+    .info p, .info select, .info input {
+      margin-top:10px; font-size:15px;
+    }
+    .info select, .info input {
+      padding:6px; font-size:14px;
+    }
+    .info ul, .info ol {
+      margin:10px 0 0 20px; line-height:1.6;
+    }
+    .social-links {
+      margin-top:20px; display:flex; gap:10px;
+    }
+    .social-links a {
+      flex:1; text-align:center;
+      padding:10px; border-radius:5px;
+      color:#fff; text-decoration:none;
+    }
+    .social-links .fb { background:#4267B2; }
+    .social-links .pin { background:#BD081C; }
+    .social-links .tg { background:#229ED9; }
+    .social-links .zalo { background:#0674e7; }
 
-    /* ========== POPUP ========== */
+    /* POPUP */
     .popup {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      justify-content: center;
-      align-items: center;
-      z-index: 900;
+      display:none; position:fixed;
+      top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.5);
+      justify-content:center;align-items:center;
+      z-index:1000;
     }
     .popup-content {
-      background: #fff;
-      padding: 25px;
-      max-width: 400px;
-      border-radius: 10px;
-      text-align: center;
+      background:#fff; padding:25px;
+      border-radius:10px; max-width:400px;
+      text-align:center;
     }
     .popup-content img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
+      width:100%; border-radius:10px; margin-bottom:15px;
     }
-    .close {
-      margin-top: 10px;
-      color: #666;
-      cursor: pointer;
-      text-decoration: underline;
+    .close-btn {
+      margin-top:10px; color:#666;
+      cursor:pointer; text-decoration:underline;
     }
 
-    /* ========== SOCIAL LINKS ========== */
-    .social a {
-      display: inline-block;
-      margin: 10px 5px 0 0;
-      padding: 8px 12px;
-      color: #fff;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .social a:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    .fb { background: #4267B2; }
-    .pin { background: #BD081C; }
-    .tg { background: #229ED9; }
-    .zalo { background: #0674e7; }
-
-    /* ========== DARK MODE ========== */
-    .dark-mode {
-      background: #121212;
-      color: #eee;
-    }
-    .dark-mode header { background: #333; }
-    .dark-mode nav, .dark-mode .dropdown-content, .dark-mode .wrapper { background: #222; }
-    .dark-mode nav a, .dark-mode .dropdown-btn, .dark-mode .dropdown-content a {
-      background: #333; color: #eee;
-    }
-    .dark-mode nav a:hover, .dark-mode .dropdown-btn:hover, .dark-mode .dropdown-content a:hover {
-      background: #444;
-    }
-    .dark-mode .left { background: #2a2a2a; }
-    .dark-mode .right { background: #1e1e1e; }
-    .dark-mode .popup-content { background: #2a2a2a; color: #eee; }
-    .dark-mode .btn { background: #e53935; }
-
-    /* ========== MUSIC DISC ========== */
-    .music-disc {
-      position: fixed;
-      bottom: 20px; right: 20px;
-      width: 60px; height: 60px;
-      border-radius: 50%;
-      overflow: hidden;
-      animation: spin 4s linear infinite;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      z-index: 800;
-    }
-    .music-disc img { width:100%; height:100%; }
-    @keyframes spin { from { transform:rotate(0) } to { transform:rotate(360deg) } }
-
-    /* ========== AUDIO ========== */
-    audio#bgmusic { display:none; }
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 600px) {
-      .wrapper { flex-direction: column; }
-      nav { gap:5px; }
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .container { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
   <header><h1>AuraShop</h1></header>
 
-  <!-- DARK MODE TOGGLE -->
-  <button id="toggleDark" style="
-    position:fixed; top:20px; right:20px;
-    background:#e53935; color:#fff; border:none;
-    padding:8px 12px; border-radius:5px; cursor:pointer;
-    z-index:1000;
-  ">🌙 Dark Mode</button>
-
-  <!-- NAVIGATION -->
   <nav>
     <a href="#">HOME</a>
-    <div class="dropdown">
-      <div class="dropdown-btn">DANH MỤC SẢN PHẨM</div>
-      <div class="dropdown-content">
-        <a href="#">KHU GIẢI TRÍ</a>
-        <a href="#">KHU LÀM VIỆC</a>
-        <a href="#">KHU AI</a>
-        <a href="#">KHU HỌC TẬP</a>
-      </div>
-    </div>
+    <a href="#">DANH MỤC SẢN PHẨM</a>
     <a href="#">TĂNG TƯƠNG TÁC</a>
     <a href="#">PROXY</a>
     <a href="#">VPN</a>
   </nav>
 
-  <!-- MUSIC DISC & AUDIO -->
-  <div class="music-disc">
-    <img src="https://cdn-icons-png.flaticon.com/512/727/727218.png" alt="disc">
-  </div>
-  <audio id="bgmusic" autoplay loop>
-    <source src="https://cdn.pixabay.com/audio/2022/11/03/audio_f49102b3e3.mp3" type="audio/mp3">
-  </audio>
+  <!-- Nhạc YouTube tự động -->
+  <iframe width="0" height="0" src="https://www.youtube.com/embed/4EuknxA6ZtQ?autoplay=1&loop=1&playlist=4EuknxA6ZtQ" 
+          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+  </iframe>
 
-  <!-- SẢN PHẨM -->
-  <div class="wrapper">
-    <div class="left">
-      <img id="product-img"
+  <div class="container">
+    <!-- ẢNH & MUA NGAY -->
+    <div class="image-box">
+      <img id="product-img" class="product-img"
            src="https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_ng%C3%A0y_eoe5ow.png"
-           alt="Gói 1 ngày">
-      <!-- đã bỏ dòng Quét mã QR -->
+           alt="Netflix Premium">
       <button class="btn" onclick="showPopup()">💳 MUA NGAY</button>
     </div>
-    <div class="right">
+
+    <!-- THÔNG TIN SẢN PHẨM -->
+    <div class="info">
       <h2 style="color:#e53935;">Netflix Premium - Tài khoản</h2>
       <p><strong>Tình trạng:</strong> <span style="color:green;">Còn hàng</span></p>
       <p><strong>Thể loại:</strong> App, Giải trí, Xem phim</p>
+
       <p><strong>Thời hạn:</strong>
         <select id="plan" onchange="updateInfo()">
           <option value="1">1 ngày</option>
@@ -282,16 +152,20 @@
           <option value="365">1 năm</option>
         </select>
       </p>
+
       <p><strong>Số lượng:</strong>
         <input type="number" id="qty" value="1" min="1" onchange="updateInfo()">
       </p>
-      <p><strong>Giá:</strong> <span id="price" style="color:#e53935;font-size:18px;">25.000đ</span></p>
+
+      <p><strong>Giá:</strong>
+        <span id="price" style="color:#e53935;font-size:18px;">25.000đ</span>
+      </p>
 
       <hr>
 
       <h3>Lưu ý quan trọng</h3>
-      <ul style="font-size:15px;line-height:1.7;padding-left:18px;">
-        <li>Sau khi thanh toán, bấm "Nhận tài khoản" để gửi thông tin thanh toán cho mình xử lý đơn hàng.</li>
+      <ul>
+        <li>Sau khi quét mã QR thanh toán thành công, bấm nút "Nhận tài khoản" để gửi thông tin thanh toán.</li>
         <li>Không thay đổi mật khẩu khi sử dụng.</li>
         <li>Không cộng dồn thời hạn nếu mua nhiều.</li>
         <li>Dành cho người dùng ngắn hạn, tiết kiệm chi phí.</li>
@@ -299,8 +173,8 @@
         <li>Hãy kiểm tra kỹ sản phẩm trước khi mua.</li>
       </ul>
 
-      <h3 style="margin-top:25px;">Quy trình nhận hàng</h3>
-      <ol style="font-size:15px;line-height:1.7;padding-left:20px;">
+      <h3>Quy trình nhận hàng</h3>
+      <ol>
         <li>Nhận 1 user riêng trong tài khoản tạo sẵn.</li>
         <li>Sau thanh toán, nhận được Email, mật khẩu, user.</li>
         <li>Xử lý đơn trong vòng 1 giờ.</li>
@@ -310,11 +184,11 @@
         <li>Có hướng dẫn đăng nhập sau khi mua.</li>
       </ol>
 
-      <div class="social">
-        <a href="https://www.facebook.com/shopauraasia" class="fb" target="_blank">Facebook</a>
-        <a href="https://www.pinterest.com/aurashopasia/" class="pin" target="_blank">Pinterest</a>
-        <a href="https://t.me/aurashopasia" class="tg" target="_blank">Telegram</a>
-        <a href="https://zalo.me/0377104835" class="zalo" target="_blank">Zalo</a>
+      <div class="social-links">
+        <a href="https://www.facebook.com/shopauraasia" class="fb">Facebook</a>
+        <a href="https://www.pinterest.com/aurashopasia/" class="pin">Pinterest</a>
+        <a href="https://t.me/aurashopasia" class="tg">Telegram</a>
+        <a href="https://zalo.me/0377104835" class="zalo">Zalo</a>
       </div>
     </div>
   </div>
@@ -324,25 +198,13 @@
     <div class="popup-content">
       <h3>Thanh toán qua QR</h3>
       <img id="qr-img" src="" alt="QR code">
-      <p style="font-size:14px;">
-        Sau khi quét mã QR thanh toán thành công, bấm nút "Nhận tài khoản" bên dưới để gửi thông tin thanh toán cho mình xử lý đơn hàng.
-      </p>
-      <a class="btn" href="http://m.me/shopauraasia/" target="_blank">💬 Nhận Tài Khoản</a>
-      <div class="close" onclick="document.getElementById('popup').style.display='none'">Đóng</div>
+      <p>Sau khi quét mã QR thanh toán thành công, bấm nút "Nhận tài khoản" bên dưới để gửi thông tin thanh toán cho mình xử lý đơn hàng.</p>
+      <a class="btn" href="http://m.me/shopauraasia/" target="_blank">💬 Nhận tài khoản</a>
+      <div class="close-btn" onclick="document.getElementById('popup').style.display='none'">Đóng</div>
     </div>
   </div>
 
-  <!-- ========== SCRIPTS ========== -->
   <script>
-    // Dark mode toggle
-    const toggleBtn = document.getElementById("toggleDark");
-    toggleBtn.onclick = () => {
-      document.body.classList.toggle("dark-mode");
-      toggleBtn.innerText = document.body.classList.contains("dark-mode")
-        ? "☀️ Light Mode" : "🌙 Dark Mode";
-    };
-
-    // Product logic
     const imgMap = {
       "1": "https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_ng%C3%A0y_eoe5ow.png",
       "7": "https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_tu%E1%BA%A7n_eeoi4x.png",
@@ -350,29 +212,28 @@
       "365": "https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_n%C4%83m_v6txkk.png"
     };
     const qrMap = { "1":25000, "7":70000, "30":130000, "365":390000 };
-    const qrDesc = { "1":"acc+netflix+1ngay", "7":"acc+netflix+1tuan", "30":"acc+netflix+1thang", "365":"acc+netflix+1nam" };
+    const qrDesc= { "1":"acc+netflix+1ngay", "7":"acc+netflix+1tuan", "30":"acc+netflix+1thang", "365":"acc+netflix+1nam" };
 
-    function updateInfo() {
-      const plan = document.getElementById('plan').value;
-      const qty  = parseInt(document.getElementById('qty').value);
-      const price = qrMap[plan] * qty;
-      document.getElementById('price').innerText = price.toLocaleString('vi-VN') + 'đ';
-      document.getElementById('product-img').src = imgMap[plan];
+    function updateInfo(){
+      const plan=document.getElementById('plan').value;
+      const qty =parseInt(document.getElementById('qty').value);
+      const price=qrMap[plan]*qty;
+      document.getElementById('price').innerText=price.toLocaleString('vi-VN')+'đ';
+      document.getElementById('product-img').src=imgMap[plan];
     }
 
-    function showPopup() {
-      const plan = document.getElementById('plan').value;
-      const qty  = parseInt(document.getElementById('qty').value);
-      const amount = qrMap[plan] * qty;
-      const des    = qrDesc[plan];
-      const qrURL  = `https://qr.sepay.vn/img?bank=TPBank&acc=16661388888&template=compact&amount=${amount}&des=${des}`;
-      document.getElementById('qr-img').src = qrURL;
-      document.getElementById('popup').style.display = "flex";
+    function showPopup(){
+      const plan=document.getElementById('plan').value;
+      const qty =parseInt(document.getElementById('qty').value);
+      const amount=qrMap[plan]*qty;
+      const des  =qrDesc[plan];
+      const qrURL=`https://qr.sepay.vn/img?bank=TPBank&acc=16661388888&template=compact&amount=${amount}&des=${des}`;
+      document.getElementById('qr-img').src=qrURL;
+      document.getElementById('popup').style.display='flex';
     }
 
-    // Initialize
+    // init
     updateInfo();
   </script>
-
 </body>
 </html>
