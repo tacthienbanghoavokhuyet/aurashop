@@ -30,7 +30,7 @@
     nav {
       display: flex;
       overflow-x: auto;
-      overflow-y: visible; /* Cho phép hiển thị nội dung vượt chiều dọc */
+      overflow-y: visible;
       justify-content: center;
       gap: 8px;
       padding: 8px;
@@ -44,7 +44,7 @@
       display: none;
     }
 
-    nav a, .dropdown-btn {
+    nav a {
       flex: 0 0 auto;
       padding: 8px 12px;
       background: #eee;
@@ -55,40 +55,11 @@
       cursor: pointer;
       transition: background .3s, color .3s, transform .3s, box-shadow .3s;
     }
-    nav a:hover, .dropdown-btn:hover {
+    nav a:hover {
       background: #000;
       color: #fff;
       transform: scale(1.05);
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .dropdown {
-      position: relative;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #fff;
-      border: 1px solid #ccc;
-      min-width: 200px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      z-index: 100;
-    }
-    .dropdown-content a {
-      display: block;
-      padding: 8px 12px;
-      color: #333;
-      text-decoration: none;
-      transition: background .3s, color .3s;
-    }
-    .dropdown-content a:hover {
-      background: #000;
-      color: #fff;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
     }
 
     .container {
@@ -281,16 +252,11 @@
 
   <nav>
     <a href="https://www.aurashop.asia/">HOME</a>
-    <div class="dropdown">
-      <div class="dropdown-btn">DANH MỤC SẢN PHẨM</div>
-      <div class="dropdown-content">
-        <a href="https://www.aurashop.asia/khu-s%E1%BA%A3n-ph%E1%BA%A9m">Tất cả sản phẩm</a>
-        <a href="https://www.aurashop.asia/khu-s%E1%BA%A3n-ph%E1%BA%A9m/khu-gi%E1%BA%A3i-tr%C3%AD">Khu giải trí</a>
-        <a href="https://www.aurashop.asia/khu-s%E1%BA%A3n-ph%E1%BA%A9m/khu-làm-vi%E1%BB%87c">Khu làm việc</a>
-        <a href="https://www.aurashop.asia/khu-s%E1%BA%A3n-ph%E1%BA%A9m/khu-ai">Khu AI</a>
-        <a href="https://www.aurashop.asia/khu-s%E1%BA%A3n-ph%E1%BA%A9m/khu-h%E1%BB%8Dc-t%E1%BA%ADp">Khu học tập</a>
-      </div>
-    </div>
+    <a href="https://www.aurashop.asia/khu-s%E1%BA%A3n-ph%E1%BA%A9m">Tất cả sản phẩm</a>
+    <a href="https://www.aurashop.asia/khu-s%E1%BA%A3n-ph%E1%BA%A9m/khu-gi%E1%BA%A3i-tr%C3%AD">Khu giải trí</a>
+    <a href="https://www.aurashop.asia/khu-s%E1%BA%A3n-ph%E1%BA%A9m/khu-làm-vi%E1%BB%87c">Khu làm việc</a>
+    <a href="https://www.aurashop.asia/khu-s%E1%BA%A3n-ph%E1%BA%A9m/khu-ai">Khu AI</a>
+    <a href="https://www.aurashop.asia/khu-s%E1%BA%A3n-ph%E1%BA%A9m/khu-h%E1%BB%8Dc-t%E1%BA%ADp">Khu học tập</a>
     <a href="https://app.likeqq.vn/auth/register?ref=575359">TĂNG TƯƠNG TÁC</a>
     <a href="https://9proxy.com/sign-up?inviteCode=9P_aurashop.asia">PROXY</a>
     <a href="https://www.facebook.com/shopauraasia/">VPN</a>
