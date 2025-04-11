@@ -21,7 +21,6 @@
     .dropdown-content a{display:block;padding:8px 12px;color:#333;text-decoration:none;transition:background .3s,color .3s}
     .dropdown-content a:hover{background:#000;color:#fff}
     .dropdown:hover .dropdown-content{display:block}
-    .dropdown:hover .dropdown-btn{background:#000;color:#fff}
 
     .container{max-width:1000px;margin:20px auto;background:#fff;border-radius:10px;box-shadow:0 0 20px rgba(0,0,0,0.1);padding:20px}
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -62,15 +61,6 @@
     .popup-content .btn{margin-top:10px}
     .close-btn{position:absolute;top:10px;right:10px;cursor:pointer;font-size:18px;color:#666}
 
-    #music-control{position:fixed;bottom:20px;right:20px;z-index:999;background:#fff;padding:10px;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.2);cursor:pointer;display:flex;align-items:center;justify-content:center}
-    #music-control img{width:30px;height:30px}
-    .spinning{animation:spin 2s linear infinite}
-
-    @keyframes spin{
-      0%{transform:rotate(0deg)}
-      100%{transform:rotate(360deg)}
-    }
-
     iframe{display:none}
   </style>
 </head>
@@ -95,15 +85,102 @@
     <a href="#">VPN</a>
   </nav>
 
-  <!-- Nhạc nền -->
-  <audio id="bg-music" autoplay loop>
+  <!-- Nhạc nền YouTube autoplay -->
+  <iframe src="https://www.youtube.com/embed/4EuknxA6ZtQ?autoplay=1&loop=1&playlist=4EuknxA6ZtQ" allow="autoplay"></iframe>
+  <audio autoplay loop>
     <source src="https://cdn.pixabay.com/audio/2022/11/03/audio_f49102b3e3.mp3" type="audio/mp3">
   </audio>
-  <div id="music-control" onclick="toggleMusic()">
-    <img id="music-icon" src="https://cdn-icons-png.flaticon.com/512/727/727245.png" class="spinning" alt="Music">
+
+  <div class="container">
+    <div class="grid-2">
+      <div>
+        <img id="product-img" class="product-img" src="https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_ng%C3%A0y_eoe5ow.png" alt="Netflix Premium">
+        <button class="btn" onclick="showPopup()">💳 MUA NGAY</button>
+      </div>
+      <div class="info">
+        <div class="stars">★★★★★</div>
+        <h2>Netflix Premium - Tài khoản</h2>
+        <p><strong>Tình trạng:</strong> <span style="color:green">Còn hàng</span></p>
+        <p><strong>Thể loại:</strong> App, Giải trí, Xem phim</p>
+
+        <p><strong>Gói sản phẩm:</strong><br>
+          <select id="plan" onchange="updateInfo()">
+            <option value="1">1 Ngày</option>
+            <option value="7">1 Tuần</option>
+            <option value="30">1 Tháng</option>
+            <option value="365">1 Năm - 5 thiết bị</option>
+          </select>
+        </p>
+
+        <div class="price"><strong>Giá:</strong> <span id="price">25.000đ</span></div>
+
+        <hr>
+
+        <h3>Lưu ý quan trọng</h3>
+        <ul>
+          <li>Sau khi quét mã QR thanh toán thành công, bấm nút "Nhận tài khoản" để gửi thông tin thanh toán.</li>
+          <li>Không thay đổi mật khẩu khi sử dụng.</li>
+          <li>Không cộng dồn thời hạn nếu mua nhiều.</li>
+          <li>Dành cho người dùng ngắn hạn, tiết kiệm chi phí.</li>
+          <li>Hệ thống có thể thay đổi mật khẩu để bảo mật.</li>
+          <li>Hãy kiểm tra kỹ sản phẩm trước khi mua.</li>
+        </ul>
+
+        <h3 style="margin-top:20px">Quy trình nhận hàng</h3>
+        <ol style="margin-bottom:20px">
+          <li>Nhận 1 user riêng trong tài khoản tạo sẵn.</li>
+          <li>Sau thanh toán, nhận được Email, mật khẩu, user.</li>
+          <li>Xử lý đơn trong vòng 1 giờ.</li>
+          <li>Bấm "Nhận tài khoản" để gửi info.</li>
+          <li>1 thiết bị 1 thời điểm (không xem cùng lúc).</li>
+          <li>Chỉ dùng ở Việt Nam và một số nước Đông Nam Á.</li>
+          <li>Có hướng dẫn đăng nhập sau khi mua.</li>
+        </ol>
+
+        <div class="social-links">
+          <a class="fb" href="https://www.facebook.com/shopauraasia">Facebook</a>
+          <a class="pin" href="https://www.pinterest.com/aurashopasia/">Pinterest</a>
+          <a class="tg" href="https://t.me/aurashopasia">Telegram</a>
+          <a class="zalo" href="https://zalo.me/0377104835">Zalo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="trust">
+      <div class="trust-item">
+        <div class="icon">🏷️</div>
+        <div class="title">Sản phẩm cao cấp</div>
+        <div class="desc">Bản quyền chính hãng</div>
+      </div>
+      <div class="trust-item">
+        <div class="icon">🛡️</div>
+        <div class="title">Bảo hành vĩnh viễn</div>
+        <div class="desc">Hoàn tiền 100%</div>
+      </div>
+      <div class="trust-item">
+        <div class="icon">⚙️</div>
+        <div class="title">Hỗ trợ cài đặt</div>
+        <div class="desc">Hướng dẫn tận tình chu đáo</div>
+      </div>
+      <div class="trust-item">
+        <div class="icon">💳</div>
+        <div class="title">Đặt hàng, thanh toán</div>
+        <div class="desc">Nhanh chóng, tiện lợi</div>
+      </div>
+    </div>
   </div>
 
-  <!-- Nội dung sản phẩm giữ nguyên -->
+  <div class="popup" id="popup" onclick="closePopup()">
+    <div class="popup-content" onclick="event.stopPropagation()">
+      <span class="close-btn" onclick="closePopup()">×</span>
+      <h3>Thanh toán qua QR</h3>
+      <img id="qr-img" src="" alt="QR code"/>
+      <p style="margin-top:10px;">
+        Sau khi quét mã QR thanh toán thành công, bấm nút "Nhận tài khoản" bên dưới để gửi thông tin thanh toán cho mình xử lý đơn hàng.
+      </p>
+      <button class="btn" onclick="window.open('http://m.me/shopauraasia/','_blank')">💬 Nhận tài khoản</button>
+    </div>
+  </div>
 
   <script>
     const imgMap={"1":"https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_ng%C3%A0y_eoe5ow.png","7":"https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_tu%E1%BA%A7n_eeoi4x.png","30":"https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_th%C3%A1ng_l9exo8.png","365":"https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_n%C4%83m_v6txkk.png"};
@@ -123,19 +200,6 @@
     function closePopup(){
       document.getElementById('popup').classList.remove('show');
     }
-
-    const music=document.getElementById('bg-music');
-    const icon=document.getElementById('music-icon');
-    function toggleMusic(){
-      if(music.paused){
-        music.play();
-        icon.classList.add('spinning');
-      }else{
-        music.pause();
-        icon.classList.remove('spinning');
-      }
-    }
-
     updateInfo();
   </script>
 </body>
