@@ -13,32 +13,51 @@
       background:#f7f7f7; color:#333;
       transition:background .3s,color .3s;
     }
-    header { background:#e53935; color:#fff; text-align:center; padding:10px 0 }
+
+    /* HEADER */
+    header {
+      background:#000; color:#fff;
+      text-align:center; padding:12px 0;
+    }
+
+    /* NAV */
     nav {
-      display:flex; justify-content:center; flex-wrap:wrap; gap:10px;
-      padding:10px; background:#fff;
+      display:flex; overflow-x:auto;
+      justify-content:center; gap:8px;
+      padding:8px; background:#fff;
       box-shadow:0 2px 4px rgba(0,0,0,0.1);
     }
     nav a, .dropdown-btn {
+      flex:0 0 auto;
       padding:8px 12px; background:#eee; color:#333;
-      text-decoration:none; border-radius:5px; font-weight:600;
-      cursor:pointer; transition:background .3s,color .3s;
+      text-decoration:none; border-radius:5px;
+      font-weight:600; cursor:pointer;
+      transition:background .3s,color .3s;
     }
     nav a:hover, .dropdown-btn:hover {
-      background:#e53935; color:#fff;
+      background:#000; color:#fff;
     }
     .dropdown { position:relative }
+    .dropdown-btn.active {
+      background:#000; color:#fff;
+    }
     .dropdown-content {
       display:none; position:absolute; top:100%; left:0;
-      background:#fff; border:1px solid #ccc; min-width:160px;
+      background:#fff; border:1px solid #ccc; min-width:200px;
       box-shadow:0 4px 8px rgba(0,0,0,0.1); z-index:100;
     }
     .dropdown-content a {
       display:block; padding:8px 12px; color:#333; text-decoration:none;
+      transition:background .3s,color .3s;
     }
-    .dropdown-content a:hover { background:#eee }
-    .dropdown:hover .dropdown-content { display:block }
+    .dropdown-content a:hover {
+      background:#000; color:#fff;
+    }
+    .dropdown:hover .dropdown-content {
+      display:block;
+    }
 
+    /* CONTAINER */
     .container {
       max-width:1000px; margin:20px auto;
       background:#fff; border-radius:10px;
@@ -84,17 +103,17 @@
       flex:1; text-align:center; padding:10px;
       border-radius:5px; color:#fff; text-decoration:none;
       font-weight:600; transition:background .3s;
+      background:#e53935;
     }
-    .social-links .fb { background:#4267B2 }
-    .social-links .pin { background:#BD081C }
-    .social-links .tg { background:#229ED9 }
-    .social-links .zalo { background:#0674e7 }
+    .social-links a:hover { background:#c62828 }
 
     .trust {
       display:grid; grid-template-columns:repeat(4,1fr);
       gap:10px; margin-top:30px; text-align:center;
     }
-    @media(max-width:768px){ .trust{grid-template-columns:1fr 1fr} }
+    @media(max-width:768px){
+      .trust{grid-template-columns:1fr 1fr}
+    }
     .trust-item {
       background:#fafafa; padding:15px; border-radius:8px;
     }
@@ -104,20 +123,19 @@
 
     /* POPUP */
     .popup {
-      display:none; /* ẩn */
+      display:none;
       position:fixed; top:0; left:0; right:0; bottom:0;
       background:rgba(0,0,0,0.5);
       justify-content:center; align-items:center;
       z-index:1000;
     }
     .popup.show {
-      display:flex !important; /* khi active */
+      display:flex !important;
     }
     .popup-content {
-      position:relative;
-      background:#fff; padding:25px;
-      max-width:400px; border-radius:10px;
-      text-align:center;
+      position:relative; background:#fff;
+      padding:25px; max-width:400px;
+      border-radius:10px; text-align:center;
     }
     .popup-content img {
       width:100%; border-radius:10px; margin-bottom:15px;
@@ -141,10 +159,11 @@
     <div class="dropdown">
       <div class="dropdown-btn">DANH MỤC SẢN PHẨM</div>
       <div class="dropdown-content">
-        <a href="#">KHU GIẢI TRÍ</a>
-        <a href="#">KHU LÀM VIỆC</a>
-        <a href="#">KHU AI</a>
-        <a href="#">KHU HỌC TẬP</a>
+        <a href="https://www.aurashop.asia/khu-sản-phẩm">Tất cả sản phẩm</a>
+        <a href="https://www.aurashop.asia/khu-sản-phẩm/khu-giải-trí">Khu giải trí</a>
+        <a href="https://www.aurashop.asia/khu-sản-phẩm/khu-làm-việc">Khu làm việc</a>
+        <a href="https://www.aurashop.asia/khu-sản-phẩm/khu-ai">Khu AI</a>
+        <a href="https://www.aurashop.asia/khu-sản-phẩm/khu-học-tập">Khu học tập</a>
       </div>
     </div>
     <a href="#">TĂNG TƯƠNG TÁC</a>
@@ -154,20 +173,19 @@
 
   <!-- Nhạc nền YouTube autoplay -->
   <iframe src="https://www.youtube.com/embed/4EuknxA6ZtQ?autoplay=1&loop=1&playlist=4EuknxA6ZtQ" allow="autoplay"></iframe>
+  <!-- Fallback audio -->
   <audio autoplay loop>
     <source src="https://cdn.pixabay.com/audio/2022/11/03/audio_f49102b3e3.mp3" type="audio/mp3">
   </audio>
 
   <div class="container">
     <div class="grid-2">
-      <!-- Hình & nút Mua -->
       <div>
         <img id="product-img" class="product-img"
              src="https://res.cloudinary.com/drsf9okr7/image/upload/v1744300982/T%C3%A0i_kho%E1%BA%A3n_Netflix_Premium_1_ng%C3%A0y_eoe5ow.png"
              alt="Netflix Premium">
         <button class="btn" onclick="showPopup()">💳 MUA NGAY</button>
       </div>
-      <!-- Thông tin -->
       <div class="info">
         <div class="stars">★★★★★</div>
         <h2>Netflix Premium - Tài khoản</h2>
@@ -209,10 +227,10 @@
         </ol>
 
         <div class="social-links">
-          <a href="https://www.facebook.com/shopauraasia" class="fb">Facebook</a>
-          <a href="https://www.pinterest.com/aurashopasia/" class="pin">Pinterest</a>
-          <a href="https://t.me/aurashopasia" class="tg">Telegram</a>
-          <a href="https://zalo.me/0377104835" class="zalo">Zalo</a>
+          <a href="https://www.facebook.com/shopauraasia">Facebook</a>
+          <a href="https://www.pinterest.com/aurashopasia/">Pinterest</a>
+          <a href="https://t.me/aurashopasia">Telegram</a>
+          <a href="https://zalo.me/0377104835">Zalo</a>
         </div>
       </div>
     </div>
@@ -282,7 +300,6 @@
       document.getElementById('popup').classList.remove('show');
     }
 
-    // Khởi tạo giá & ảnh
     updateInfo();
   </script>
 </body>
